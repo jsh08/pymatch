@@ -522,6 +522,7 @@ class Matcher:
 
     @staticmethod
     def _scores_to_accuracy(m, X, y):
-        preds = [[1.0 if i >= .5 else 0.0 for i in m.predict(X)]]
+        #preds = [[1.0 if i >= .5 else 0.0 for i in m.predict(X)]]
         #return (y == preds).sum() * 1.0 / len(y)
+        preds = [1.0 if i >= .5 else 0.0 for i in m.predict(X)]
         return (y.to_numpy().T == preds).sum() * 1.0 / len(y)
